@@ -1,13 +1,15 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Project';
+
 
   constructor(public translate: TranslateService) {
     translate.addLangs(['en', 'tr']);
@@ -18,4 +20,9 @@ export class AppComponent {
   switchLang(lang: string) {
     this.translate.use(lang);
   }
+
+  ngOnInit () {}
+
+
 }
+

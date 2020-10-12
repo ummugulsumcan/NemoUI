@@ -1,6 +1,22 @@
 {
   "Save": "Kaydet",
-  "Cancel":"İptal",
-  "Pause": "Beklet"
-
+  "Cancel": "İptal",
+  "Pause": "Beklet",
+  "LOGIN": {
+    "USERNAME": "Name is required.",
+    "USERNAME_PATTERN": "Name must be characters.",
+    "PASSWORD_PATTERN": "Password must be  numbers.",
+    "PASSWORD": "Password is required.",
+    "LOGIN": "Sıgn In",
+    "GO_HOME": "Go Back",
+    "HOME_LOGIN": "Login"
+  },
+  "MESSAGE": {
+    "USER": "Bilgileri eksik girdiniz.",
+    "INCORRECT": "Hatalı username ya da parola girdiniz."
+  },
+  "HOME": {
+    "TITLE": "Home"
+  }
 }
+
