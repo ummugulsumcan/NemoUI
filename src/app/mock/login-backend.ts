@@ -17,8 +17,9 @@ const users = [
   }
 ];
 
-export function login(loginRequestModel: LoginRequest): Observable<HttpEvent<any>> {
-  const user = users.find(user => user.username === loginRequestModel.username && user.password === loginRequestModel.password);
+export function login(requestString): Observable<HttpEvent<any>> {
+  const loginRequest: LoginRequest = JSON.parse(requestString);
+  const user = users.find(user => user.username === loginRequest.username && user.password === loginRequest.password);
   if (user) {
     console.log('login');
     return of(new HttpResponse({

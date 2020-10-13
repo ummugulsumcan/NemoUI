@@ -1,6 +1,7 @@
 <div class="bg-danger p-2 text-center text-white" *ngIf="errorMessage!=null">
-  {{errorMessage}}
+  <p>{{ errorMessage}}</p>
 </div>
+
 <body>
 <div class="container">
   <div class="row">
@@ -10,34 +11,36 @@
           <h5 class="card-title text-center">{{'LOGIN.LOGIN' | translate }}</h5>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="form-group">
-              <input class="form-control" formControlName="username" placeholder="Username">
-              <div *ngIf="username.invalid && (username.dirty || username.touched)"
+              <input class="form-control"  formControlName="username"  placeholder="Username">
+              <div *ngIf="this.loginForm.get('username').invalid && (this.loginForm.get('username').dirty || this.loginForm.get('username').touched)"
                    class="alert alert-danger">
-                <div *ngIf="username.errors.required">
+                <div *ngIf="this.loginForm.get('username').errors.required">
                   <label> {{'LOGIN.USERNAME' | translate }}</label>
                 </div>
-                <div *ngIf="username.errors.pattern">
+                <div *ngIf="this.loginForm.get('username').errors.pattern">
                   <label> {{'LOGIN.USERNAME_PATTERN' | translate }}</label>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <input class="form-control" formControlName="password" placeholder="Password" type="password">
-              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+              <input class="form-control" formControlName="password" placeholder="Password" type="password" >
+
+              <div *ngIf="this.loginForm.get('password').invalid && (this.loginForm.get('password').dirty || this.loginForm.get('password').touched)"
                    class="alert alert-danger">
-                <div *ngIf="password.errors.required">
+                <div *ngIf="this.loginForm.get('password').errors.required">
                   <label> {{'LOGIN.PASSWORD' | translate }}</label>
                 </div>
-                <div *ngIf="password.errors.pattern">
+                <div *ngIf="this.loginForm.get('password').errors.pattern">
                   <label> {{'LOGIN.PASSWORD_PATTERN' | translate }}</label>
                 </div>
               </div>
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase"
-                    (click)="getLogin()">{{'LOGIN.LOGIN' | translate }}</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+            >{{'LOGIN.LOGIN' | translate }}</button>
             <button class="btn btn-lg btn-primary btn-block text-uppercase"
                     (click)="getHome()">{{'LOGIN.GO_HOME' | translate }}</button>
             <hr class="my-4">
+
           </form>
         </div>
       </div>

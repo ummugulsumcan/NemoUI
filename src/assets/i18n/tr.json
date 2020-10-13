@@ -3,20 +3,20 @@
   "Cancel": "İptal",
   "Pause": "Beklet",
   "LOGIN": {
-    "USERNAME": "Name is required.",
-    "USERNAME_PATTERN": "Name must be characters.",
-    "PASSWORD_PATTERN": "Password must be  numbers.",
-    "PASSWORD": "Password is required.",
-    "LOGIN": "Sıgn In",
-    "GO_HOME": "Go Back",
-    "HOME_LOGIN": "Login"
+    "USERNAME": "İsim alanını boş bırakmayınız.",
+    "USERNAME_PATTERN": "İsim alanı sadece karakterden oluşmalıdır.",
+    "PASSWORD_PATTERN": "Şifre sadece numaralardan oluşmalıdır",
+    "PASSWORD": "Şifre alanını boş bırakmayınız.",
+    "LOGIN": "Oturum aç",
+    "GO_HOME": "Geri Dön",
+    "HOME_LOGIN": "Giriş"
   },
   "MESSAGE": {
     "USER": "Bilgileri eksik girdiniz.",
     "INCORRECT": "Hatalı username ya da parola girdiniz."
   },
   "HOME": {
-    "TITLE": "Home"
+    "TITLE": "Ana Ekran"
   }
 }
 
