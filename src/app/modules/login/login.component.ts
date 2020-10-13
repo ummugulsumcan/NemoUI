@@ -58,19 +58,15 @@ export class LoginComponent implements OnInit {
             this.errorMessage = null;
           }
         }, (error => {
-          this.showErrorMessage();
+          this.showErrorMessage('MESSAGE.INCORRECT');
         }));
     } else {
-      this.showErrorMessage();
+      this.showErrorMessage('MESSAGE.USER');
     }
   }
 
-  showErrorMessage() {
-    if (this.loginForm.valid) {
-      this.errorMessage =  this.translate.instant('MESSAGE.INCORRECT');
-    } else {
-      this.errorMessage =  this.translate.instant('MESSAGE.USER');
-    }
+  showErrorMessage(message:string) {
+    this.errorMessage =  this.translate.instant(message);
     return this.errorMessage;
   }
 

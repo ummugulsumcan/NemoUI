@@ -10,7 +10,7 @@ export class HomeComponent {
 
   constructor(private router:Router, public translate: TranslateService){
     translate.addLangs(['en', 'tr']);
-    translate.setDefaultLang('tr');
+    translate.setDefaultLang('en');
   }
 
   goToLogin(){
