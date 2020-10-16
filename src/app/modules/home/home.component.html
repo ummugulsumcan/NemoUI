@@ -1,7 +1,15 @@
-<nav class="navbar navbar-light  bg-primary " >
-  <h5 class="navbar-brand">{{'HOME.TITLE' | translate }}</h5>
+<body>
+<nav class="navbar navbar-light  bg-primary ">
+  <h5 class="navbar-brand">{{ 'HOME.TITLE' | translate }}</h5>
   <form class="form-inline">
-    <button class="btn btn-primary btn-outline-light" (click)="goToLogin()">{{'LOGIN.HOME_LOGIN' | translate }}</button>
+    <div>{{UserName}}</div>
+    <button class="btn btn-primary btn-outline-light" (click)="goToLogin()" *ngIf="!disabled" >
+      {{ 'LOGIN.LOGIN' | translate }} </button>
+    <button class="btn btn-primary btn-outline-light" (click)="logout()">{{ 'LOGOUT.LOGOUT' | translate }}</button>
   </form>
 </nav>
+<button class="btn btn-primary btn-outline-light" (click)="goToShop()">Shop</button>
+<button class="btn btn-primary btn-outline-light" (click)="goToProduct()">Product</button>
+</body>
+
 

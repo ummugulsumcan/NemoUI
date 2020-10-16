@@ -4,7 +4,9 @@ export class LoginRequest{
 }
 
 export class LoginResponse{
+
   username: string;
   age: number;
   roles: string[];
+  token : string;
 }

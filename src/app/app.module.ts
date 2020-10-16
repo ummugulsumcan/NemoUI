@@ -5,19 +5,25 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {UsersServices} from './shared/services/users-services';
+import {UserServices} from './shared/services/user-services';
 import {LoginComponent} from './modules/login/login.component';
 import {HomeComponent} from './modules/home/home.component';
 import {CommonModule} from '@angular/common';
 import {fakeBackendProvider} from './mock/fake-backend.interceptor';
+import {AuthenticationGuardService} from './shared/services/authentication-guard.service';
+import {AuthenticationService} from './shared/services/authentication.service';
+import { ShopComponent } from './modules/shop/shop.component';
+import { ProductComponent } from './modules/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ShopComponent,
+    ProductComponent
 
   ],
   imports: [
@@ -34,7 +40,8 @@ import {fakeBackendProvider} from './mock/fake-backend.interceptor';
       }
     }),
   ],
-  providers: [UsersServices,fakeBackendProvider],
+  providers: [UserServices,fakeBackendProvider,AuthenticationGuardService,
+    AuthenticationService],
   bootstrap: [AppComponent],
   exports : [MatButtonModule]
 
