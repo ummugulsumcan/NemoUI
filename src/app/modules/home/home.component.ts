@@ -17,16 +17,26 @@ export class HomeComponent implements OnInit {
     translate.setDefaultLang('en');
   }
 
-  disabled: boolean = false;
+  userFound: boolean = false;
 
   tokenDisabled(): boolean {
     const token = localStorage.getItem('token');
-    if(token == null) {
-      this.disabled = false;
+    if (token == null) {
+      this.userFound = false;
     } else {
-      this.disabled = true;
+      this.userFound = true;
     }
-    return this.disabled;
+    return this.userFound;
+  }
+
+  logoutDisabled(): boolean {
+    const token = localStorage.getItem('token');
+    if (token == null) {
+      this.userFound = false;
+    } else {
+      this.userFound = true;
+    }
+    return this.userFound;
   }
 
   goToShop() {
@@ -44,15 +54,16 @@ export class HomeComponent implements OnInit {
   logout() {
     this.authService.clear();
     this.authService.clearUsername();
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('home');
   }
 
-  get UserName() {
+  get userName() {
     return localStorage.getItem('username');
   }
 
   ngOnInit(): void {
     this.tokenDisabled();
+    this.logoutDisabled();
 
   }
 

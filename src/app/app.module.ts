@@ -16,6 +16,7 @@ import {AuthenticationGuardService} from './shared/services/authentication-guard
 import {AuthenticationService} from './shared/services/authentication.service';
 import { ShopComponent } from './modules/shop/shop.component';
 import { ProductComponent } from './modules/product/product.component';
+import {NotFoundComponent} from './shared/module/layout/pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProductComponent } from './modules/product/product.component';
     LoginComponent,
     HomeComponent,
     ShopComponent,
-    ProductComponent
+    ProductComponent,
+    NotFoundComponent
 
   ],
   imports: [

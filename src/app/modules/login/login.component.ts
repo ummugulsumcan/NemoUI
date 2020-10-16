@@ -28,14 +28,9 @@ export class LoginComponent implements OnInit {
               private userService: UserServices,
               public translate: TranslateService,
               private route: ActivatedRoute) {
-
-    translate.addLangs(['en', 'tr']);
-    translate.setDefaultLang('en');
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
+
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
