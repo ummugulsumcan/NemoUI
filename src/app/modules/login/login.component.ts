@@ -26,14 +26,8 @@ export class LoginComponent implements OnInit {
 
   constructor(http: HttpClient, private router: Router, private userService: UsersServices, public translate: TranslateService) {
 
-    translate.addLangs(['en', 'tr']);
-    translate.setDefaultLang('en');
-
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
 
   ngOnInit(): void {}
 
