@@ -1,6 +1,22 @@
 {
   "Save": "Kaydet",
-  "Cancel":"İptal",
-  "Pause": "Beklet"
-
+  "Cancel": "İptal",
+  "Pause": "Beklet",
+  "LOGIN": {
+    "USERNAME": "İsim alanını boş bırakmayınız.",
+    "USERNAME_PATTERN": "İsim alanı sadece karakterden oluşmalıdır.",
+    "PASSWORD_PATTERN": "Şifre sadece numaralardan oluşmalıdır",
+    "PASSWORD": "Şifre alanını boş bırakmayınız.",
+    "LOGIN": "Oturum aç",
+    "GO_HOME": "Geri Dön",
+    "HOME_LOGIN": "Giriş"
+  },
+  "MESSAGE": {
+    "USER": "Bilgileri eksik girdiniz.",
+    "INCORRECT": "Hatalı username ya da parola girdiniz."
+  },
+  "HOME": {
+    "TITLE": "Ana Ekran"
+  }
 }
+

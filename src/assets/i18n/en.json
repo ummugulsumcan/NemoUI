@@ -1,6 +1,22 @@
 {
   "Save": "Save",
   "Cancel": "Cancel",
-  "Pause": "Pause"
+  "Pause": "Pause",
+  "LOGIN": {
+    "USERNAME": "Name is required.",
+    "USERNAME_PATTERN": "Name must be characters.",
+    "PASSWORD_PATTERN": "Password must be numbers.",
+    "PASSWORD": "Password is required.",
+    "LOGIN": "Sıgn In",
+    "GO_HOME": "Go Back",
+    "HOME_LOGIN": "Login"
+  },
+  "MESSAGE": {
+    "USER": "Please enter  name and password.",
+    "INCORRECT": "You entered undefined name or password."
+  },
+  "HOME": {
+    "TITLE": "Home"
+  }
 
 }
