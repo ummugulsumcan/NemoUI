@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   charPattern = /^[a-zA-Z]*$/;
   numberPattern = /^[0-9]*$/;
   returnUrl: string;
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern(this.charPattern)]),
     password: new FormControl('', [Validators.required, Validators.pattern(this.numberPattern)]),
@@ -29,7 +30,6 @@ export class LoginComponent implements OnInit {
               public translate: TranslateService,
               private route: ActivatedRoute) {
   }
-
 
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(loginRequest)
         .subscribe(response => {
           if (response) {
-            if (localStorage.getItem('token') != null) {
+            if (localStorage.getItem('token') != null ) {
               this.router.navigateByUrl(this.returnUrl);
               this.errorMessage = null;
             } else {

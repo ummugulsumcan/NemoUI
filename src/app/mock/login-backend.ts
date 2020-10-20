@@ -7,16 +7,22 @@ const users = [
     username: 'admin',
     password: '1234',
     age: 15,
-    roles: ['ADMIN'],
+    roles: 'ADMIN',
     token : 'Bearer'+ Math.random()
   },
   {
     username: 'customer',
     password: '1234',
     age: 15,
-    roles: ['CUSTOMER'],
+    roles: 'CUSTOMER',
     token : 'Bearer'+ Math.random()
-  }
+  } ,{
+    username: 'ali',
+    password: '1234',
+    age: 15,
+    roles: 'SHOP',
+    token : 'Bearer'+ Math.random()
+  },
 ];
 
 

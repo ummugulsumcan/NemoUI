@@ -12,11 +12,14 @@ import {LoginComponent} from './modules/login/login.component';
 import {HomeComponent} from './modules/home/home.component';
 import {CommonModule} from '@angular/common';
 import {fakeBackendProvider} from './mock/fake-backend.interceptor';
-import {AuthenticationGuardService} from './shared/services/authentication-guard.service';
 import {AuthenticationService} from './shared/services/authentication.service';
 import { ShopComponent } from './modules/shop/shop.component';
 import { ProductComponent } from './modules/product/product.component';
 import {NotFoundComponent} from './shared/module/layout/pages/not-found/not-found.component';
+import {AuthenticationGuard} from './guard/authentication-guard';
+import {AuthorizationGuard} from './guard/authorization-guard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import {NotFoundComponent} from './shared/module/layout/pages/not-found/not-foun
     HttpClientModule,
     MatButtonModule,
     AppRoutingModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
     CommonModule, ReactiveFormsModule, FormsModule,
     TranslateModule.forRoot({
       loader: {
@@ -42,8 +47,8 @@ import {NotFoundComponent} from './shared/module/layout/pages/not-found/not-foun
       }
     }),
   ],
-  providers: [UserServices,fakeBackendProvider,AuthenticationGuardService,
-    AuthenticationService],
+  providers: [UserServices,fakeBackendProvider,AuthenticationGuard,
+    AuthenticationService,AuthorizationGuard],
   bootstrap: [AppComponent],
   exports : [MatButtonModule]
 

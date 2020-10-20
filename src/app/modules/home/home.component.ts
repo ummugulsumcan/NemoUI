@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from '../../shared/services/authentication.service';
+import {UserServices} from '../../shared/services/user-services';
+import {LoginRequest} from '../../shared/models/user';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,24 +14,40 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
               public translate: TranslateService,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private userService: UserServices) {
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');
   }
 
   userFound: boolean = false;
+  userRole: string;
+  roleFound: boolean = false;
 
-  tokenDisabled(): boolean {
-    const token = localStorage.getItem('token');
-    if (token == null) {
-      this.userFound = false;
+
+
+  roleDisable(): boolean {
+    if (true) {
+      console.log(" "+this.userService.isUserRole())
+      this.roleFound = false;
     } else {
-      this.userFound = true;
+      this.roleFound = true;
+      console.log(this.roleFound+"roles");
     }
-    return this.userFound;
+
+    return this.roleFound;
   }
 
   logoutDisabled(): boolean {
+    const token = localStorage.getItem('token');
+    if (token == null) {
+      this.userFound = true;
+    } else {
+      this.userFound = false;
+    }
+    return this.userFound;
+  }
+  loginDisabled(): boolean {
     const token = localStorage.getItem('token');
     if (token == null) {
       this.userFound = false;
@@ -40,11 +58,13 @@ export class HomeComponent implements OnInit {
   }
 
   goToShop() {
-    this.router.navigateByUrl('shop');
+   this.router.navigateByUrl('shop');
+
   }
 
   goToProduct() {
     this.router.navigateByUrl('product');
+
   }
 
   goToLogin() {
@@ -54,7 +74,7 @@ export class HomeComponent implements OnInit {
   logout() {
     this.authService.clear();
     this.authService.clearUsername();
-    this.router.navigateByUrl('home');
+   // this.authService.clearRole();
   }
 
   get userName() {
@@ -62,9 +82,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tokenDisabled();
-    this.logoutDisabled();
 
+    this.logoutDisabled();
+    this.loginDisabled();
+   // this.roleDisable();
   }
 
 }
