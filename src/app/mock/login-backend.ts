@@ -7,27 +7,36 @@ const users = [
     username: 'admin',
     password: '1234',
     age: 15,
-    roles: ['ADMIN']
+    roles: 'ADMIN',
+    token : 'Bearer'+ Math.random()
   },
   {
     username: 'customer',
     password: '1234',
     age: 15,
-    roles: ['ADMIN']
-  }
+    roles: 'CUSTOMER',
+    token : 'Bearer'+ Math.random()
+  } ,{
+    username: 'ali',
+    password: '1234',
+    age: 15,
+    roles: 'SHOP',
+    token : 'Bearer'+ Math.random()
+  },
 ];
+
 
 export function login(requestString): Observable<HttpEvent<any>> {
   const loginRequest: LoginRequest = JSON.parse(requestString);
   const user = users.find(user => user.username === loginRequest.username && user.password === loginRequest.password);
+
   if (user) {
-    console.log('login');
     return of(new HttpResponse({
       status: 200, body: <LoginResponse> {
         username: user.username,
         age: user.age,
         roles: user.roles,
-        token: 'fake token'
+        token:user.token
       }
     }));
   } else {

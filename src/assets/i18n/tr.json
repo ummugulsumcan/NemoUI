@@ -11,6 +11,9 @@
     "GO_HOME": "Geri Dön",
     "HOME_LOGIN": "Giriş"
   },
+  "LOGOUT": {
+    "LOGOUT": "ÇIKIŞ"
+  },
   "MESSAGE": {
     "USER": "Bilgileri eksik girdiniz.",
     "INCORRECT": "Hatalı username ya da parola girdiniz."

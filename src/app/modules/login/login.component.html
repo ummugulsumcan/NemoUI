@@ -1,19 +1,17 @@
 <div class="bg-danger p-2 text-center text-white" *ngIf="errorMessage!=null">
   <p>{{ errorMessage}}</p>
 </div>
-
 <body>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
-          <h5 class="card-title text-center">{{'LOGIN.LOGIN' | translate }}</h5>
+          <h5 class="card-title text-center">{{'LOGIN.SIGN_IN' | translate }}</h5>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="form-group">
-              <input class="form-control"  formControlName="username"  placeholder="Username">
-              <div *ngIf="this.loginForm.get('username').invalid && (this.loginForm.get('username').dirty || this.loginForm.get('username').touched)"
-                   class="alert alert-danger">
+              <input class="form-control" formControlName="username" placeholder="Username">
+              <div *ngIf="this.loginForm.get('username').invalid && (this.loginForm.get('username').dirty || this.loginForm.get('username').touched)" class="alert alert-danger">
                 <div *ngIf="this.loginForm.get('username').errors.required">
                   <label> {{'LOGIN.USERNAME' | translate }}</label>
                 </div>
@@ -23,10 +21,8 @@
               </div>
             </div>
             <div class="form-group">
-              <input class="form-control" formControlName="password" placeholder="Password" type="password" >
-
-              <div *ngIf="this.loginForm.get('password').invalid && (this.loginForm.get('password').dirty || this.loginForm.get('password').touched)"
-                   class="alert alert-danger">
+              <input class="form-control" formControlName="password" placeholder="Password" type="password">
+              <div *ngIf="this.loginForm.get('password').invalid && (this.loginForm.get('password').dirty || this.loginForm.get('password').touched)" class="alert alert-danger">
                 <div *ngIf="this.loginForm.get('password').errors.required">
                   <label> {{'LOGIN.PASSWORD' | translate }}</label>
                 </div>
@@ -35,12 +31,8 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
-            >{{'LOGIN.LOGIN' | translate }}</button>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase"
-                    (click)="getHome()">{{'LOGIN.GO_HOME' | translate }}</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">{{'LOGIN.SIGN_IN' | translate }}</button>
             <hr class="my-4">
-
           </form>
         </div>
       </div>

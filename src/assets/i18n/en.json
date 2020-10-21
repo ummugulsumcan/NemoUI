@@ -7,7 +7,8 @@
     "USERNAME_PATTERN": "Name must be characters.",
     "PASSWORD_PATTERN": "Password must be numbers.",
     "PASSWORD": "Password is required.",
-    "LOGIN": "Sıgn In",
+    "LOGIN": "LOGIN",
+    "SIGN_IN": "Sign in",
     "GO_HOME": "Go Back",
     "HOME_LOGIN": "Login"
   },
@@ -16,7 +17,9 @@
     "INCORRECT": "You entered undefined name or password."
   },
   "HOME": {
-    "TITLE": "Home"
-  }
-
+    "TITLE": "HOME"
+  },
+  "LOGOUT": {
+  "LOGOUT": "LOGOUT"
+}
 }
