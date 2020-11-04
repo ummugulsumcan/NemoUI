@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserServices} from '../../shared/services/user-services';
+import {UserService} from '../../shared/services/user-service';
 import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {LoginRequest} from '../../shared/models/user';
+
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -25,15 +26,16 @@ export class LoginComponent implements OnInit {
 
   constructor(http: HttpClient,
               private router: Router,
-              private userService: UserServices,
+              private userService: UserService,
               public translate: TranslateService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              ) {
   }
-
-
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+
   }
 
 
@@ -52,6 +54,7 @@ export class LoginComponent implements OnInit {
           if (response) {
             if (localStorage.getItem('token') != null) {
               this.router.navigateByUrl(this.returnUrl);
+
               this.errorMessage = null;
             } else {
               this.router.navigateByUrl('login');

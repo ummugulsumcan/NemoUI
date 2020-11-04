@@ -7,6 +7,6 @@ export class LoginResponse{
 
   username: string;
   age: number;
-  roles: string[];
+  roles: string;
   token : string;
 }
