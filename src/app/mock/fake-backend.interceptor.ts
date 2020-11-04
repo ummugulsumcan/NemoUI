@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
-import {login} from './login-backend';
+import {login, role} from './login-backend';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const {url, method, headers, body, params} = request;
+    const {url, method, body, params} = request;
+
 
     return of(null)
       .pipe(mergeMap(handleRoute))
@@ -22,6 +23,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         /** LOGIN **/
         case url.endsWith('/users') && method === 'POST':
           return login(body);
+        case url.endsWith('/users') && method === 'GET':
+          return role(params);
         default:
           return next.handle(request);
       }
@@ -30,13 +33,15 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 }
 
 // helper functions
-export function ok(responseBody?) {
-  return of(new HttpResponse({status: 200, body: responseBody}));
-}
 
 export function error(message) {
   return throwError({error: message});
 }
+
+export function ok(responseBody?) {
+  return of(new HttpResponse({status: 200, body: responseBody}));
+}
+
 
 export let fakeBackendProvider = {
   provide: HTTP_INTERCEPTORS,
