@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from '../../shared/services/authentication.service';
-import {UserServices} from '../../shared/services/user-services';
-import {LoginRequest} from '../../shared/models/user';
+import { NgxRolesService} from 'ngx-permissions';
+import {LocalStorageService} from 'ngx-webstorage';
+import {StorageService} from '../../shared/services/storage.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,38 +16,22 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
               public translate: TranslateService,
               private authService: AuthenticationService,
-              private userService: UserServices) {
+              private roleService: NgxRolesService,
+              private storage:LocalStorageService,
+              private storageService: StorageService) {
+
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');
   }
 
+
   userFound: boolean = false;
-  userRole: string;
-  roleFound: boolean = false;
+
+  //cache: boolean = false;
 
 
+  userName = this.storageService.getUsername();
 
-  roleDisable(): boolean {
-    if (true) {
-      console.log(" "+this.userService.isUserRole())
-      this.roleFound = false;
-    } else {
-      this.roleFound = true;
-      console.log(this.roleFound+"roles");
-    }
-
-    return this.roleFound;
-  }
-
-  logoutDisabled(): boolean {
-    const token = localStorage.getItem('token');
-    if (token == null) {
-      this.userFound = true;
-    } else {
-      this.userFound = false;
-    }
-    return this.userFound;
-  }
   loginDisabled(): boolean {
     const token = localStorage.getItem('token');
     if (token == null) {
@@ -57,35 +42,49 @@ export class HomeComponent implements OnInit {
     return this.userFound;
   }
 
-  goToShop() {
-   this.router.navigateByUrl('shop');
-
+  logoutDisabled(): boolean {
+    const token = localStorage.getItem('token');
+    if (token == null) {
+      this.userFound = false;
+    } else {
+      this.userFound = true;
+    }
+    return this.userFound;
   }
 
-  goToProduct() {
-    this.router.navigateByUrl('product');
+  goToShipping() {
+    this.router.navigateByUrl('shipping');
+  }
 
+  goToPayment() {
+    this.router.navigateByUrl('payment');
   }
 
   goToLogin() {
     this.router.navigateByUrl('login');
   }
 
+  goToCatalog() {
+    this.router.navigateByUrl('catalog');
+  }
+
+
+
+
   logout() {
     this.authService.clear();
     this.authService.clearUsername();
-   // this.authService.clearRole();
+    this.roleService.flushRoles();
+    this.router.navigateByUrl('home');
+
   }
 
-  get userName() {
-    return localStorage.getItem('username');
-  }
 
   ngOnInit(): void {
 
-    this.logoutDisabled();
     this.loginDisabled();
-   // this.roleDisable();
+    this.logoutDisabled();
+
   }
 
 }

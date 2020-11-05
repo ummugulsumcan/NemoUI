@@ -8,23 +8,30 @@ const users = [
     password: '1234',
     age: 15,
     roles: 'ADMIN',
-    token : 'Bearer'+ Math.random()
+    token: 'Bearer' + Math.random()
   },
   {
     username: 'customer',
     password: '1234',
     age: 15,
     roles: 'CUSTOMER',
-    token : 'Bearer'+ Math.random()
-  } ,{
+    token: 'Bearer' + Math.random()
+  },
+  {
     username: 'ali',
     password: '1234',
     age: 15,
-    roles: 'SHOP',
-    token : 'Bearer'+ Math.random()
+    roles: 'PRODUCT',
+    token: 'Bearer' + Math.random()
   },
+  {
+    username: 'ahmet',
+    password: '1234',
+    age: 15,
+    roles: 'CART',
+    token: 'Bearer' + Math.random()
+  }
 ];
-
 
 export function login(requestString): Observable<HttpEvent<any>> {
   const loginRequest: LoginRequest = JSON.parse(requestString);
@@ -36,11 +43,29 @@ export function login(requestString): Observable<HttpEvent<any>> {
         username: user.username,
         age: user.age,
         roles: user.roles,
-        token:user.token
+        token: user.token
       }
     }));
   } else {
     return throwError({error: 'ERROR'});
   }
 
+}
+
+export function role(params:any) :Observable<HttpEvent<any>> {
+
+  const user =users.find(user=>user.username===params.get('username'));
+
+  if (user) {
+    return of(new HttpResponse({
+      status: 200, body: <LoginResponse> {
+        username: user.username,
+        age: user.age,
+        roles: user.roles,
+        token: user.token
+      }
+    }));
+  }else {
+    return throwError({error: 'ERROR'});
+  }
 }

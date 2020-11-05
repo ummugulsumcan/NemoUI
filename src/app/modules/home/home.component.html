@@ -7,8 +7,14 @@
     <button class="btn btn-primary btn-outline-light" (click)="logout()"  *ngIf="userFound">{{ 'LOGOUT.LOGOUT' | translate }}</button>
   </form>
 </nav>
-<button class="btn btn-primary btn-outline-light" (click)="goToShop()" >Shop</button>
-<button class="btn btn-primary btn-outline-light" (click)="goToProduct()" >Product</button>
+<div>
+  <button class="btn btn-primary btn-outline-light"  *ngxPermissionsOnly="['ADMIN','PRODUCT']"    (click)="goToShipping()">Shipping</button>
+  <button class="btn btn-primary btn-outline-light"  *ngxPermissionsOnly="['ADMIN','CUSTOMER']"  (click)="goToPayment()">Payment</button>
+  <button class="btn btn-primary btn-outline-light"  *ngxPermissionsOnly="['ADMIN','CART']"      (click)="goToCatalog()">Catalog</button>
+</div>
+
+
+
 </body>
 
 
