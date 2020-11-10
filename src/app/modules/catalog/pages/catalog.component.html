@@ -1,1 +1,10 @@
-<p>catalog works!</p>
+<h1>ProductList</h1>
+<toggle-button (changed)="checked=$event"></toggle-button>
+
+<ng-container *ngIf=checked>
+  <app-card [productsList]="productsList" ></app-card>
+</ng-container>
+
+<ng-container *ngIf=!checked>
+  <app-table [productsList]="productsList" ></app-table>
+</ng-container>

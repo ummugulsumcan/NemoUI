@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../shared/services/user-service';
 import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {LoginRequest} from '../../shared/models/user';
+import {StorageService} from '../../shared/services/storage.service';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Component({
@@ -29,13 +31,13 @@ export class LoginComponent implements OnInit {
               private userService: UserService,
               public translate: TranslateService,
               private route: ActivatedRoute,
+              private storageService: StorageService,
+              @Inject(PLATFORM_ID) private platformId: any
               ) {
   }
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-
   }
 
 
@@ -52,13 +54,16 @@ export class LoginComponent implements OnInit {
       this.userService.login(loginRequest)
         .subscribe(response => {
           if (response) {
-            if (localStorage.getItem('token') != null) {
-              this.router.navigateByUrl(this.returnUrl);
+            if(isPlatformBrowser(this.platformId)){
+              if (this.storageService.getToken() != null) {
+                this.router.navigateByUrl(this.returnUrl);
 
-              this.errorMessage = null;
-            } else {
-              this.router.navigateByUrl('login');
+                this.errorMessage = null;
+              } else {
+                this.router.navigateByUrl('login');
+              }
             }
+
           }
         }, (error => {
           this.showErrorMessage('MESSAGE.INCORRECT');
