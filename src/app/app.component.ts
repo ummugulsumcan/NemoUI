@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Component({
@@ -11,7 +12,8 @@ export class AppComponent {
   title = 'Project';
 
 
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService,
+            ) {
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');
   }
@@ -21,7 +23,10 @@ export class AppComponent {
     this.translate.use(lang);
   }
 
-  ngOnInit () {}
+  ngOnInit () {
+
+  }
+
 
 
 }

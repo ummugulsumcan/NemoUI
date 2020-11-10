@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +10,27 @@ export class StorageService {
 
   private cache = false;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
 
 
   }
 
-  public getUsername(): string {
+  getUsername(): string {
 
-    return this.cache ? "" : localStorage.getItem(this.KEY_USERNAME);
+    if (isPlatformBrowser(this.platformId)) {
+      return this.cache ? "" : localStorage.getItem(this.KEY_USERNAME);
+    }
+
 
   }
 
+  getToken(): string {
+
+    if (isPlatformBrowser(this.platformId)) {
+
+      return localStorage.getItem('token');
+    }
+  }
 
 
 }

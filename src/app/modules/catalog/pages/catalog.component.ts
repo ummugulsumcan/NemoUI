@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ProductResponse} from '../../../shared/models/product';
+import {ProductService} from '../../../shared/services/product-service';
+
 
 @Component({
   selector: 'catalog',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private productService: ProductService) {
   }
 
+  checked: boolean;
+
+  productList: ProductResponse[];
+
+
+  ngOnInit(): void {
+
+    this.products();
+  }
+
+   products(): void {
+
+    console.log(JSON.stringify(this.productService.getProduct()));
+
+    this.productService.getProduct().subscribe(value => this.productList = value);
+
+  }
+
+  get productsList(): ProductResponse[] {
+
+  return  this.productList;
+
+  }
 }

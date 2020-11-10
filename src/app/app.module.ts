@@ -19,6 +19,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import {AuthorizationGuard} from './guard/authorization-guard';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {UnauthComponent} from './modules/unAuth/unauth.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {UnauthComponent} from './modules/unAuth/unauth.component';
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     MatButtonModule,
     AppRoutingModule,
@@ -47,6 +48,7 @@ import {UnauthComponent} from './modules/unAuth/unauth.component';
     }),
     NgxPermissionsModule.forRoot(),
     NgxWebstorageModule.forRoot(),
+    NgbModule,
 
 
   ],
@@ -71,7 +73,6 @@ import {UnauthComponent} from './modules/unAuth/unauth.component';
 export class AppModule {
 }
 
-// tslint:disable-next-line:typedef
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

@@ -3,6 +3,7 @@ import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 import {login, role} from './login-backend';
+import { getProductList} from './product-backend';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -25,6 +26,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return login(body);
         case url.endsWith('/users') && method === 'GET':
           return role(params);
+        /** PRODUCT **/
+        case url.endsWith('/products') && method === 'GET':
+          return getProductList();
         default:
           return next.handle(request);
       }
