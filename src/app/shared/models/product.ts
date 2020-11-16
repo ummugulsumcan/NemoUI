@@ -1,6 +1,6 @@
 export class ProductRequest {
 
-  id : number;
+  id: number;
   name: string;
   price: number;
   imageUrl: string;
@@ -9,11 +9,12 @@ export class ProductRequest {
 
 }
 export class ProductResponse {
-  id : number;
+  id: number;
   name: string;
   price: number;
   imageUrl: string;
   description?: string;
   category?: string;
+  createDate: Date;
 
 }

@@ -5,7 +5,7 @@ import {HomeComponent} from './modules/home/home.component';
 import {NotFoundComponent} from './shared/module/layout/pages/not-found/not-found.component';
 import {AuthenticationGuard} from './guard/authentication-guard';
 import {NgxPermissionsGuard} from 'ngx-permissions';
-import {UnauthComponent} from './modules/unAuth/unauth.component';
+import {UnAuthComponent} from './modules/unAuth/unauth.component';
 
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
 
-  {path: 'unAuth', component: UnauthComponent},
+  {path: 'unAuth', component: UnAuthComponent},
 
   {
     path: 'shipping',
@@ -55,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot( routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

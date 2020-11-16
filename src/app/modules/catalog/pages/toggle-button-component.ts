@@ -1,6 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'toggle-button',
   template: `
     <input type="checkbox" id="toggle-button-checkbox"

@@ -3,7 +3,8 @@ import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 import {login, role} from './login-backend';
-import { getProductList} from './product-backend';
+import {getProductList} from './product-backend';
+import {getUsersList} from './customer-backend';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -18,17 +19,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       .pipe(delay(500))
       .pipe(dematerialize());
 
-    function handleRoute() {
+    function handleRoute(): Observable<any> {
       switch (true) {
-
-        /** LOGIN **/
         case url.endsWith('/users') && method === 'POST':
           return login(body);
         case url.endsWith('/users') && method === 'GET':
           return role(params);
-        /** PRODUCT **/
         case url.endsWith('/products') && method === 'GET':
           return getProductList();
+        case url.endsWith('/customers') && method === 'GET':
+          return getUsersList();
         default:
           return next.handle(request);
       }
@@ -36,13 +36,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   }
 }
 
-// helper functions
 
-export function error(message) {
+export function error(message): Observable<any> {
   return throwError({error: message});
 }
 
-export function ok(responseBody?) {
+
+export function ok(responseBody?): Observable<any> {
   return of(new HttpResponse({status: 200, body: responseBody}));
 }
 

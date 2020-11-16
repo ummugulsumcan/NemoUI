@@ -11,14 +11,12 @@ export class StorageService {
   private cache = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
-
-
   }
 
   getUsername(): string {
 
     if (isPlatformBrowser(this.platformId)) {
-      return this.cache ? "" : localStorage.getItem(this.KEY_USERNAME);
+      return this.cache ? '' : localStorage.getItem(this.KEY_USERNAME);
     }
 
 

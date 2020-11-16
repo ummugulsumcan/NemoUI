@@ -1,29 +1,23 @@
-
 <div class="container">
   <table class="table table-hover table-striped table-bordered">
     <thead>
     <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>price</th>
-      <th>description</th>
-      <th>category</th>
+      <ng-container *ngFor="let column of columnDefs;">
+        <th>{{column.displayName | translate}}</th>
+      </ng-container>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of productsList ">
-      <td>{{product.id}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.description}}</td>
-      <td>{{product.category}}</td>
+    <tr *ngFor="let row of dataList;">
+      <ng-container *ngFor="let column of columnDefs;">
+        <td [ngClass]="column.classFn(column.name,row)">{{column.formatCellValue(row, column.name)}}</td>
+      </ng-container>
       <td>
-        <button class="btn btn-outline-primary btn-sm">Details</button>
+        <button class="btn btn-outline-primary btn-sm" (click)="clickRow(row)">Details</button>
         <button class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
       </td>
     </tr>
     </tbody>
-
   </table>
 </div>

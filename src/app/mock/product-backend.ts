@@ -1,4 +1,4 @@
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {HttpEvent, HttpResponse} from '@angular/common/http';
 
 

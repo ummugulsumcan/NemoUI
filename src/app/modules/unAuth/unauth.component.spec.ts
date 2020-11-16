@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UnauthComponent } from './unauth.component';
+import { UnAuthComponent } from './unauth.component';
 
-describe('UnauthComponent', () => {
-  let component: UnauthComponent;
-  let fixture: ComponentFixture<UnauthComponent>;
+describe('UnAuthComponent', () => {
+  let component: UnAuthComponent;
+  let fixture: ComponentFixture<UnAuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnauthComponent ]
+      declarations: [ UnAuthComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnauthComponent);
+    fixture = TestBed.createComponent(UnAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

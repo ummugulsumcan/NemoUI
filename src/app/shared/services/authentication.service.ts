@@ -10,31 +10,31 @@ export class AuthenticationService {
 
 
   isAuthenticated(): boolean {
-    if(isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       return token != null;
     }
 
   }
 
-  clear() {
-    if(isPlatformBrowser(this.platformId)){
+  clear(): void {
+    if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.removeItem('token');
       return token;
     }
 
   }
 
-  clearUsername() {
-    if(isPlatformBrowser(this.platformId)){
+  clearUsername(): void {
+    if (isPlatformBrowser(this.platformId)) {
       const username = localStorage.removeItem('username');
       return username;
     }
 
   }
 
-  clearRole() {
-    if(isPlatformBrowser(this.platformId)){
+  clearRole(): void {
+    if (isPlatformBrowser(this.platformId)) {
       const role = localStorage.removeItem('role');
       return role;
     }

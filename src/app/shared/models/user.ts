@@ -8,5 +8,5 @@ export class LoginResponse{
   username: string;
   age: number;
   roles: string;
-  token : string;
+  token: string;
 }

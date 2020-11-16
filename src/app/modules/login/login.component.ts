@@ -17,7 +17,6 @@ import {isPlatformBrowser} from '@angular/common';
 export class LoginComponent implements OnInit {
 
   public errorMessage: string;
-
   charPattern = /^[a-zA-Z]*$/;
   numberPattern = /^[0-9]*$/;
   returnUrl: string;
@@ -37,15 +36,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
-
-  onSubmit(form: FormGroup) {
+  onSubmit(form: FormGroup): void{
     this.markAsTouched(form);
-
     const loginRequest = new LoginRequest();
-
     loginRequest.username = this.loginForm.get('username').value;
     loginRequest.password = this.loginForm.get('password').value;
 
@@ -54,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(loginRequest)
         .subscribe(response => {
           if (response) {
-            if(isPlatformBrowser(this.platformId)){
+            if (isPlatformBrowser(this.platformId)){
               if (this.storageService.getToken() != null) {
                 this.router.navigateByUrl(this.returnUrl);
 
@@ -73,13 +69,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  showErrorMessage(message: string) {
+
+  showErrorMessage(message: string): string{
     this.errorMessage = this.translate.instant(message);
     return this.errorMessage;
   }
 
-  // tslint:disable-next-line:typedef
-  markAsTouched(form: FormGroup) {
+  markAsTouched(form: FormGroup): void {
     (Object as any).values(form.controls).forEach(control => {
       control.markAsTouched();
     });

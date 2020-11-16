@@ -10,9 +10,9 @@ export class AuthorizationGuard implements CanActivate {
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              private userService:UserService,
-              private roleService:NgxRolesService) {}
-
+              private userService: UserService,
+              private roleService: NgxRolesService) {
+  }
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 

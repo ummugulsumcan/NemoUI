@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'unauth',
-  templateUrl: './unauth.component.html',
-  styleUrls: ['./unauth.component.css']
+  // tslint:disable-next-line:component-selector
+  selector: 'unAuth',
+  templateUrl: './unAuth.component.html',
+  styleUrls: ['./unAuth.component.css']
 })
-export class UnauthComponent implements OnInit {
+export class UnAuthComponent implements OnInit {
 
   constructor() { }
 

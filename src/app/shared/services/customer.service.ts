@@ -1,21 +1,19 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ProductResponse} from '../models/product';
 import {environment} from '../../../environments/enviroment.dev';
 import {Injectable} from '@angular/core';
 import {tap} from 'rxjs/operators';
+import {CustomerResponse} from '../models/customers';
 
 @Injectable()
 
-export class ProductService {
-
+export class CustomerService {
   baseUrl = environment.url;
-
   constructor(private http: HttpClient) {
   }
 
-  getProduct(): Observable<ProductResponse[]> {
-    return this.http.get <ProductResponse[]>(this.baseUrl + '/products')
+  getCustomers(): Observable<CustomerResponse[]> {
+    return this.http.get <CustomerResponse[]>(this.baseUrl + '/customers')
       .pipe(tap(value =>
         console.log(value)
       ));

@@ -35,16 +35,17 @@ const users = [
 
 export function login(requestString): Observable<HttpEvent<any>> {
   const loginRequest: LoginRequest = JSON.parse(requestString);
+  // tslint:disable-next-line:no-shadowed-variable
   const user = users.find(user => user.username === loginRequest.username && user.password === loginRequest.password);
 
   if (user) {
     return of(new HttpResponse({
-      status: 200, body: <LoginResponse> {
+      status: 200, body: {
         username: user.username,
         age: user.age,
         roles: user.roles,
         token: user.token
-      }
+      } as LoginResponse
     }));
   } else {
     return throwError({error: 'ERROR'});
@@ -52,18 +53,19 @@ export function login(requestString): Observable<HttpEvent<any>> {
 
 }
 
-export function role(params:any) :Observable<HttpEvent<any>> {
+export function role(params: any): Observable<HttpEvent<any>> {
 
-  const user =users.find(user=>user.username===params.get('username'));
+  // tslint:disable-next-line:no-shadowed-variable
+  const user = users.find(user => user.username === params.get('username'));
 
   if (user) {
     return of(new HttpResponse({
-      status: 200, body: <LoginResponse> {
+      status: 200, body: {
         username: user.username,
         age: user.age,
         roles: user.roles,
         token: user.token
-      }
+      } as LoginResponse
     }));
   }else {
     return throwError({error: 'ERROR'});

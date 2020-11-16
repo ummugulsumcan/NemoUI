@@ -17,7 +17,7 @@ export class UserService implements OnInit {
               private ngRoleService: NgxRolesService,
               private storageService: StorageService) {
   }
-
+  // tslint:disable-next-line:contextual-lifecycle
   ngOnInit(): void {}
 
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
@@ -40,19 +40,16 @@ export class UserService implements OnInit {
 
     const params = new HttpParams().set('username', this.storageService.getUsername());
 
-    return this.http.get<LoginResponse>(this.baseUrl + '/users', {params: params})
+    return this.http.get<LoginResponse>(this.baseUrl + '/users', {params})
       .pipe(tap(res => this.ngRoleService.addRole(res.roles, [])));
 
   }
-
-  async addRoles() {
+  async addRoles(): Promise<any> {
 
     if (this.storageService.getUsername()) {
 
       const loginResponse = await this.role().toPromise();
-
-      if (this.storageService.getUsername() == loginResponse.username) {
-
+      if (this.storageService.getUsername() === loginResponse.username) {
         this.ngRoleService.addRole(loginResponse.roles, []);
 
       }

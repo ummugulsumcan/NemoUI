@@ -18,8 +18,8 @@ import {AuthenticationGuard} from './guard/authentication-guard';
 import {NgxPermissionsModule} from 'ngx-permissions';
 import {AuthorizationGuard} from './guard/authorization-guard';
 import {NgxWebstorageModule} from 'ngx-webstorage';
-import {UnauthComponent} from './modules/unAuth/unauth.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {UnAuthComponent} from './modules/unAuth/unauth.component';
+import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -28,8 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     HomeComponent,
     NotFoundComponent,
-    UnauthComponent,
-
+    UnAuthComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -49,8 +48,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPermissionsModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     NgbModule,
-
-
   ],
   providers: [UserService,
     fakeBackendProvider,
@@ -59,6 +56,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthorizationGuard,
     {
       provide: APP_INITIALIZER,
+      // tslint:disable-next-line:only-arrow-functions typedef
       useFactory: (us: UserService) => async function() {
         return await us.addRoles();
       },
@@ -68,11 +66,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   exports: [MatButtonModule]
-
 })
 export class AppModule {
 }
 
-export function httpTranslateLoader(http: HttpClient) {
+export function httpTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }

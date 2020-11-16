@@ -1,1 +1,3 @@
-<p>shipping works!</p>
+<div class="container" *ngIf="customerList">
+  <app-table [columnDefs]="customerColumnDefs" [dataList]="customerList"></app-table>
+</div>

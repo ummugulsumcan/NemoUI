@@ -2,9 +2,9 @@
 <toggle-button (changed)="checked=$event"></toggle-button>
 
 <ng-container *ngIf=checked>
-  <app-card [productsList]="productsList" ></app-card>
+  <app-card [productsList]="productList" (selectedProduct)="rowData($event) "></app-card>
 </ng-container>
 
 <ng-container *ngIf=!checked>
-  <app-table [productsList]="productsList" ></app-table>
+  <app-table [columnDefs]="tableColumnDefs" [dataList]="productList" (rowSelected)="rowData($event)"></app-table>
 </ng-container>

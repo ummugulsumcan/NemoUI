@@ -13,7 +13,7 @@ import {isPlatformBrowser} from '@angular/common';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
+  userFound = false;
   constructor(private router: Router,
               public translate: TranslateService,
               private authService: AuthenticationService,
@@ -21,20 +21,9 @@ export class HomeComponent implements OnInit {
               private storage: LocalStorageService,
               private storageService: StorageService,
               @Inject(PLATFORM_ID) private platformId: any) {
-
-
-
   }
 
-
-  userFound: boolean = false;
-
-  //cache: boolean = false;
-
-
-
-
-  get userName(){
+  get userName(): string {
 
     if (isPlatformBrowser(this.platformId)) {
 
@@ -69,41 +58,37 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goToShipping() {
+  goToShipping(): void {
     this.router.navigateByUrl('shipping');
   }
 
-  goToPayment() {
+  goToPayment(): void {
     this.router.navigateByUrl('payment');
   }
 
-  goToLogin() {
+  goToLogin(): void {
     this.router.navigateByUrl('login');
   }
 
-  goToCatalog() {
+  goToCatalog(): void {
     this.router.navigateByUrl('catalog');
   }
 
 
-  logout() {
+  logout(): void {
     this.authService.clear();
     this.authService.clearUsername();
     this.roleService.flushRoles();
     this.router.navigateByUrl('home');
-
   }
 
 
   ngOnInit(): void {
 
     if (isPlatformBrowser(this.platformId)) {
-
       this.translate.addLangs(['en', 'tr']);
       this.translate.setDefaultLang('en');
-
     }
-
     this.loginDisabled();
     this.logoutDisabled();
 
