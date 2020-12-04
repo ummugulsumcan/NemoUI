@@ -1,0 +1,12 @@
+<form method="get" action="#" class="search_container">
+  <input
+    [formControl]="searchWord"
+    type="text"
+    placeholder="Let's type keyword!"
+  >
+</form>
+<span *ngIf="isLoading">now loading...</span>
+
+
+<p>search result</p>
+

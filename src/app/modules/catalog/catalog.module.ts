@@ -9,9 +9,15 @@ import {CardComponent} from './card/card.component';
 import {UiSwitchModule} from 'ngx-toggle-switch';
 import {ToggleButtonComponent} from './pages/toggle-button-component';
 import {TranslateModule} from '@ngx-translate/core';
+import { FilterComponent } from './filter/filter.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PaginationComponent } from './pagination/pagination.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { SearchtextComponent } from './searchtext/searchtext.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [CatalogComponent, TableComponent, CardComponent, ToggleButtonComponent],
+  declarations: [CatalogComponent, TableComponent, CardComponent, ToggleButtonComponent, FilterComponent, PaginationComponent, SearchtextComponent],
 
   imports: [
     CommonModule,
@@ -19,10 +25,14 @@ import {TranslateModule} from '@ngx-translate/core';
     NgbModule,
     UiSwitchModule,
     TranslateModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
-  exports: [CatalogComponent, TableComponent, CardComponent, ToggleButtonComponent],
+  exports: [CatalogComponent, TableComponent, CardComponent, ToggleButtonComponent ],
 
-  providers: [ProductService]
+  providers: [ProductService],
+  bootstrap: []
 })
 export class CatalogModule {
 }

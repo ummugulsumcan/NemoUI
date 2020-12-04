@@ -1,0 +1,56 @@
+<p>filter inputs</p>
+
+<ng-container *ngFor="let filterColumn of filterDefs";>
+  <label>{{filterColumn.label}}</label>
+
+  <ng-container *ngIf=" filterColumn.type == enumValue.TEXT">
+    <input type="text" [(ngModel)]="filterColumn.value1">
+  </ng-container>
+
+  <ng-container *ngIf="filterColumn.type == enumValue.SINGLE_SELECT">
+    <select [(ngModel)]="filterColumn.value1">
+      <option></option>
+      <option *ngFor="let list of filterColumn.selectionList">
+        {{list}}</option>
+    </select>
+  </ng-container>
+
+  <ng-container *ngIf="filterColumn.type == enumValue.MULTI_SELECT">
+    <select [(ngModel)]="filterColumn.valueList" multiple>
+      <option></option>
+      <option *ngFor="let list of filterColumn.selectionList">
+        {{list}}</option>
+    </select>
+  </ng-container>
+
+  <ng-container *ngIf="filterColumn.type == enumValue.DATE">
+
+    <div class="input-group md-3 ">
+      <input placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="filterColumn.value1" ngbDatepicker #d1="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+      </div>
+    </div>
+
+    <div class="input-group md-3">
+      <input placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="filterColumn.value2" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
+
+<div class="row justify-content-sm-end">
+  <div class="col-4 mb-3">
+    <button class="btn btn-primary" (click)="filterById()">ARA</button>
+  </div>
+</div>
+
+
+
+
+
