@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt3">
+    <div class="col">
+      <div class="btn-group">
+        <button *ngFor="let page of pageNumbers"
+                (click)="selectedPageNumbers(page)"
+                class="btn btn-outline-primary">
+          {{page}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+Items per Page:
+<select (change)="handlePageSizeChange($event.target.value)">
+  <option *ngFor="let size of pageSizes" [ngValue]="size">
+    {{ size }}
+  </option>
+</select>

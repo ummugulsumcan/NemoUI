@@ -15,8 +15,7 @@ export class ProductService {
   }
 
   getProduct(): Observable<ProductResponse[]> {
-    return this.http.get <ProductResponse[]>(this.baseUrl + '/products')
-      .pipe(tap(value =>
+    return this.http.get <ProductResponse[]>(this.baseUrl + '/products').pipe(tap(value =>
         console.log(value)
       ));
   }

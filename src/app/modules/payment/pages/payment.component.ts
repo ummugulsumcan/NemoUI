@@ -7,11 +7,19 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  currentIndex = -1;
+  title = '';
 
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pageSizes = [3, 6, 9];
   constructor() {
   }
 
   ngOnInit(): void {
   }
+
+
 
 }

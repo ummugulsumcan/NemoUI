@@ -1,10 +1,18 @@
 <h1>ProductList</h1>
 <toggle-button (changed)="checked=$event"></toggle-button>
 
+<app-filter [filterDefs]="filterTable" (rowFiltered)="listFilter($event)"></app-filter>
+
 <ng-container *ngIf=checked>
   <app-card [productsList]="productList" (selectedProduct)="rowData($event) "></app-card>
 </ng-container>
 
+<app-searchtext  (searchText)="productsName($event)"></app-searchtext>
+
 <ng-container *ngIf=!checked>
   <app-table [columnDefs]="tableColumnDefs" [dataList]="productList" (rowSelected)="rowData($event)"></app-table>
 </ng-container>
+
+<app-pagination [pageNumbers]="pageNumbers" (pageSizeSelected)="updatePageSize($event)"
+                (pageSelected)="updatePageNumber($event)"></app-pagination>
+

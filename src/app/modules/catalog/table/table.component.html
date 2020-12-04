@@ -9,7 +9,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let row of dataList;">
+
+    <tr *ngFor="let row of dataList">
       <ng-container *ngFor="let column of columnDefs;">
         <td [ngClass]="column.classFn(column.name,row)">{{column.formatCellValue(row, column.name)}}</td>
       </ng-container>
@@ -21,3 +22,4 @@
     </tbody>
   </table>
 </div>
+
